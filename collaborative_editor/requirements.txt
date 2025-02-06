@@ -1,0 +1,10 @@
+asgiref>=3.8,<4.0  # Loosened version constraint
+Django    # Loosened version constraint
+gunicorn>=23.0,<24.0 # Loosened version constraint
+packaging>=24.0,<25.0 # Loosened version constraint
+psycopg2-binary>=2.9,<3.0 # Loosened version constraint
+sqlparse>=0.5,<0.6    # Loosened version constraint
+typing_extensions>=4.12,<5.0 # Loosened version constraint
+
+# Python 3.9 (or your Python version)
+

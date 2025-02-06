@@ -1,0 +1,37 @@
+<h1>Editing: {{ file.name }}</h1>
+<textarea id="editor" rows="20" cols="80">{{ file.content }}</textarea><br>
+<button id="saveBtn">Save</button>  <span id="lastModified">Last Modified: {{ file.last_modified }}</span>
+
+<a href="{% url 'unlock_file' file.id %}">Unlock File</a>  <a href="{% url 'file_list' %}">Back to File List</a>
+
+<script>
+    const editor = document.getElementById('editor');
+    const saveBtn = document.getElementById('saveBtn');
+    const lastModified = document.getElementById('lastModified');
+
+    saveBtn.addEventListener('click', () => {
+        const content = editor.value;
+        fetch("{% url 'edit_file' file.id %}", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            },
+            body: `content=${encodeURIComponent(content)}`,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                lastModified.textContent = "Last Modified: " + data.last_modified;
+            } else {
+                alert("Error saving file.");
+            }
+        });
+    });
+
+    // Basic auto-save every 5 seconds (adjust as needed)
+    setInterval(() => {
+        saveBtn.click(); // Trigger the save button click
+    }, 5000);
+</script>
+{% csrf_token %}

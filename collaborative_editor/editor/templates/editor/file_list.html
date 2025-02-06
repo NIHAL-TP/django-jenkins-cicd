@@ -1,0 +1,7 @@
+<h1>File List</h1>
+<ul>
+    {% for file in files %}
+    <li><a href="{% url 'edit_file' file.id %}">{{ file.name }}</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'create_file' %}">Create New File</a>
