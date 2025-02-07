@@ -1,1 +1,1 @@
-# This is a Jenkins CI-CD project that develops a basic django web app,connects to jenkins using webhook,build using docker,test using python and deploy using docker
+# This is a Jenkins CI-CD project that develops a basic django file editor app which connects to jenkins via webhook so that if there is any update in repository it notifies the jenkins and cicd pipeline is triggered,docker is used for build,basic security and analysis test with bandit and flake8 python libraries, push the image to Docker Hub and deploy using docker
