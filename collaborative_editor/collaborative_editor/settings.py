@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 STATIC_ROOT = '/app/static'  # Or any other path you prefer *inside* the container
+ALLOWED_HOSTS = ['13.60.45.11']  # Or your domain name
 
 LOGIN_URL = '/accounts/login/'  # Or whatever URL you want for your login page
 
