@@ -5,7 +5,8 @@ WORKDIR /app
 
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
-RUN python manage.py collectstatic --noinput
+ENV DJANGO_SETTINGS_MODULE=collaborative_editor.settings
+RUN python manage.py collectstatic --noinput || true
 
 EXPOSE 8000
 
